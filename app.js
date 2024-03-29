@@ -8,7 +8,7 @@ connecttodb();
 require("dotenv").config({path:"./config/config.env"});
 app.use(cookieParser());
 app.use(cors({
-    origin:'https://metagramapp.netlify.app',
+    origin:process.env.DOMAIN,
     credentials:true,
 }))
 
