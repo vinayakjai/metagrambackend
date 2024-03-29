@@ -28,7 +28,7 @@ app.get('/ping',(req,res)=>{
   })
 })
 
-app.use("/api/v1/",post);
+app.use("/api/v1/post",post);
 app.use("/api/v1/",user);
 
 module.exports=app;
