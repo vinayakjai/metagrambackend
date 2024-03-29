@@ -7,10 +7,18 @@ const app=express();
 connecttodb();
 require("dotenv").config({path:"./config/config.env"});
 app.use(cookieParser());
+app.use((req, res, next) => {
+  res.setHeader(`Access-Control-Allow-Origin", ${process.env.DOMAIN}`);
+  res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT,DELETE");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  next();
+})
+/*
 app.use(cors({
     origin:process.env.DOMAIN,
     credentials:true,
 }))
+*/
 
 //app.use(morgan('dev'));
 app.use(express.json({
