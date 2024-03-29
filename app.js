@@ -7,20 +7,11 @@ const app=express();
 connecttodb();
 require("dotenv").config({path:"./config/config.env"});
 app.use(cookieParser());
-/*app.use(cors({
-    origin:'http://localhost:5173',
+app.use(cors({
+    origin:'https://metagramapp.netlify.app',
     credentials:true,
 }))
-*/
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:5173');
-    res.header(
-      'Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization,  X-PINGOTHER'
-    );
-    res.header('Access-Control-Allow-Credentials', true);
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS');
-    next();
-  });
+
 //app.use(morgan('dev'));
 app.use(express.json({
   limit:"50mb"
