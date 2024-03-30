@@ -10,7 +10,7 @@ app.use(cookieParser());
 
 
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', process.env.DOMAIN);
+  res.header('Access-Control-Allow-Origin', 'https://metagramapp.netlify.app');
   res.header(
     'Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization,  X-PINGOTHER'
   );
