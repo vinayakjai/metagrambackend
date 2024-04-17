@@ -10,7 +10,7 @@ require("dotenv").config({path:"./config/config.env"});
 app.use(cookieParser());
 
 app.use(cors({
-  origin:'https://metagramapp.netlify.app',
+  origin:'https://metagramapp.netlify.app/',
   credentials:true,
 }))
 
@@ -26,7 +26,7 @@ const user=require("./routes/user");
 
 app.get('/ping',(req,res)=>{
   return res.json({
-    msg:'pong',
+    msg:'pongg',
   })
 })
 

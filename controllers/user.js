@@ -6,7 +6,7 @@ exports.register = async (req, res) => {
     try {
         const { name, email, password ,avtar} = req.body;
        
-       
+        console.log('h')
         if (!name || !email || !password) {
             return res.status(400).json({
                 success: false,
@@ -37,7 +37,7 @@ exports.register = async (req, res) => {
         res.cookie("myytoken", token, {
             expires: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000)//expires after 90 days
             , secure: true,
-            domain:'https://metagramapp.netlify.app',
+           
             httpOnly: true
         })
 
