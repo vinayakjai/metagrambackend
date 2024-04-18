@@ -5,7 +5,7 @@ exports.isLogin=async(req,res,next)=>{
    try{
    
     const {token} =req.cookies;
-    console.log(token);
+    console.log(req.cookies);
 
    
     if(!token){
