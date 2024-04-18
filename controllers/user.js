@@ -37,7 +37,7 @@ exports.register = async (req, res) => {
         res.cookie("myytoken", token, {
             expires: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000),//expires after 90 days
             httpOnly:true,
-            secure:true,
+          
         })
 
         return res.status(201).json({
@@ -95,7 +95,7 @@ exports.login = async (req, res, next) => {
         const cookieOptions = {
             maxAge: 7 * 24 * 60 * 60 * 1000,//7days
             httpOnly:true,
-            secure:true,
+        
             
           
          }
@@ -181,7 +181,7 @@ exports.logout = async (req, res, next) => {
         res.status(200).cookie("myytoken", null, {
             expires: new Date(Date.now()),
             httpOnly: true,
-            secure:true,
+            
         }).json({
             success: true,
             message: "user logged out successfully"
