@@ -94,7 +94,7 @@ exports.login = async (req, res, next) => {
         const cookieOptions = {
             maxAge: 7 * 24 * 60 * 60 * 1000,//7days
             httpOnly: true,
-            secure: true
+          
          }
          
         res.cookie("myytoken",token,cookieOptions)
