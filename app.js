@@ -10,7 +10,7 @@ require("dotenv").config({path:"./config/config.env"});
 app.use(cookieParser());
 
 app.use(cors({
-  origin:'https://metagramapp.netlify.app',
+  origin:'http://localhost:5173',
   credentials:true,
 }))
 

@@ -14,7 +14,7 @@ exports.isLogin=async(req,res,next)=>{
             
         })
     }
-
+    
     const decoded=await jwt.verify(myytoken,process.env.JWT_SECRET);
    
     req.user=await User.findById(decoded._id);
