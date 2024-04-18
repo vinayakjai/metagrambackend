@@ -34,7 +34,7 @@ exports.register = async (req, res) => {
         const token = await user.generateToken();
 
 
-        res.cookie("myytoken", token, {
+        res.cookie("token", token, {
             expires: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000),//expires after 90 days
            
           
@@ -100,7 +100,7 @@ exports.login = async (req, res, next) => {
           
          }
          
-        res.cookie("myytoken",token,cookieOptions)
+        res.cookie("token",token,cookieOptions)
         return res.status(201).json({
             success: true,
             message: "User loggedin successfully",
@@ -178,7 +178,7 @@ exports.followUser = async (req, res, next) => {
 exports.logout = async (req, res, next) => {
     try {
 
-        res.status(200).cookie("myytoken", null, {
+        res.status(200).cookie("token", null, {
             expires: new Date(Date.now()),
            
         }).json({

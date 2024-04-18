@@ -4,10 +4,10 @@ const User=require('../../models/User');
 exports.isLogin=async(req,res,next)=>{
    try{
    
-    const {myytoken} =req.cookies;
+    const {token} =req.cookies;
 
    
-    if(!myytoken){
+    if(!token){
        return  res.status(402).json({
             success:false,
             message:"please login first",
@@ -15,7 +15,7 @@ exports.isLogin=async(req,res,next)=>{
         })
     }
     
-    const decoded=await jwt.verify(myytoken,process.env.JWT_SECRET);
+    const decoded=await jwt.verify(token,process.env.JWT_SECRET);
    
     req.user=await User.findById(decoded._id);
     next();
