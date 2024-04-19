@@ -36,6 +36,10 @@ exports.register = async (req, res) => {
 
         res.cookie("token", token, {
             expires: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000),//expires after 90 days
+            sameSite:'none',
+            secure:true,
+            httpOnly:true,
+            domain:"https://metagramapp.netlify.app",
            
           
         })
@@ -94,7 +98,10 @@ exports.login = async (req, res, next) => {
         const token = await user.generateToken();
         const cookieOptions = {
             maxAge: 7 * 24 * 60 * 60 * 1000,//7days
-            
+            sameSite:'none',
+            secure:true,
+            httpOnly:true,
+            domain:"https://metagramapp.netlify.app",
         
             
           
@@ -179,7 +186,10 @@ exports.logout = async (req, res, next) => {
     try {
 
         res.status(200).cookie("token", null, {
-            expires: new Date(Date.now()),
+            sameSite:'none',
+            secure:true,
+            httpOnly:true,
+            domain:"https://metagramapp.netlify.app",
            
         }).json({
             success: true,
