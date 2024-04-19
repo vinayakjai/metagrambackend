@@ -39,7 +39,7 @@ exports.register = async (req, res) => {
             sameSite:'none',
             secure:true,
             httpOnly:true,
-            domain:".netlify.app",
+            domain:".onrender.com",
            
           
         })
@@ -101,7 +101,7 @@ exports.login = async (req, res, next) => {
             sameSite:'none',
             secure:true,
             httpOnly:true,
-            domain:".netlify.app",
+            domain:".onrender.com",
         
             
           
@@ -189,7 +189,7 @@ exports.logout = async (req, res, next) => {
             sameSite:'none',
             secure:true,
             httpOnly:true,
-            domain:".netlify.app",
+            domain:".onrender.com",
            
         }).json({
             success: true,
