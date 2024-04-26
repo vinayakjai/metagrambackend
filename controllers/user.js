@@ -34,17 +34,16 @@ exports.register = async (req, res) => {
         const token = await user.generateToken();
 
 
-        res.cookie("token", token, {
+        
+
+        return res.cookie("token", token, {
             expires: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000),//expires after 90 days
-            sameSite:'none',
-            secure:true,
+           
+            
             httpOnly:true,
-            domain:".onrender.com",
            
           
-        })
-
-        return res.status(201).json({
+        }).status(201).json({
             success: true,
             message: "User registered successfully",
             user,
@@ -98,17 +97,14 @@ exports.login = async (req, res, next) => {
         const token = await user.generateToken();
         const cookieOptions = {
             maxAge: 7 * 24 * 60 * 60 * 1000,//7days
-            sameSite:'none',
-            secure:true,
             httpOnly:true,
-            domain:".onrender.com",
         
             
           
          }
          
-        res.cookie("token",token,cookieOptions)
-        return res.status(201).json({
+       
+        return res.cookie("token",token,cookieOptions).status(201).json({
             success: true,
             message: "User loggedin successfully",
             user,
@@ -185,18 +181,15 @@ exports.followUser = async (req, res, next) => {
 exports.logout = async (req, res, next) => {
     try {
 
-        res.status(200).cookie("token", null, {
-            sameSite:'none',
-            secure:true,
-            httpOnly:true,
-            domain:".onrender.com",
+       return res.status(200).cookie("token", null, {
+          httpOnly:true,
            
         }).json({
             success: true,
             message: "user logged out successfully"
         })
     } catch (err) {
-        res.status(400).json({
+       return res.status(400).json({
             success: false,
             message: `Can't logout due to some problem`
         })
