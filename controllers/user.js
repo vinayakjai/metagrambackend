@@ -38,9 +38,7 @@ exports.register = async (req, res) => {
 
         return res.cookie("token", token, {
             expires: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000),//expires after 90 days
-           
             
-            httpOnly:true,
            
           
         }).status(201).json({
@@ -97,7 +95,7 @@ exports.login = async (req, res, next) => {
         const token = await user.generateToken();
         const cookieOptions = {
             maxAge: 7 * 24 * 60 * 60 * 1000,//7days
-            httpOnly:true,
+            
         
             
           
@@ -182,7 +180,7 @@ exports.logout = async (req, res, next) => {
     try {
 
        return res.status(200).cookie("token", null, {
-          httpOnly:true,
+          
            
         }).json({
             success: true,
