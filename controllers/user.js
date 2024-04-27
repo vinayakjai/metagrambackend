@@ -38,6 +38,8 @@ exports.register = async (req, res) => {
 
         return res.cookie("token", token, {
             expires: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000),//expires after 90 days
+            sameSite:"none",
+            secure:true,
             
            
           
@@ -96,7 +98,8 @@ exports.login = async (req, res, next) => {
         const cookieOptions = {
             maxAge: 7 * 24 * 60 * 60 * 1000,//7days
             
-        
+            sameSite:"none",
+            secure:true,
             
           
          }
@@ -180,7 +183,8 @@ exports.logout = async (req, res, next) => {
     try {
 
        return res.status(200).cookie("token", null, {
-          
+          sameSite:"none",
+          secure:true,
            
         }).json({
             success: true,
